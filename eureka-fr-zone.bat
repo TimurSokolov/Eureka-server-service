@@ -1,0 +1,1 @@
+java -jar -Dspring.profiles.active=fr-zone target/eureka-server-0.0.1-SNAPSHOT.jar

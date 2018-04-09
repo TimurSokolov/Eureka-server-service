@@ -1,0 +1,51 @@
+spring:
+  profiles: us-zone
+  application:
+    name: eureka-server
+server:
+  port: 9001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-ru-zone.com:9002/eureka/,http://eureka-fr-zone.com:9003/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    appname: eureka-server
+    hostname: eureka-us-zone.com
+
+---
+
+spring:
+  profiles: ru-zone
+  application:
+    name: eureka-server
+server:
+  port: 9002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-us-zone.com:9001/eureka/,http://eureka-fr-zone.com:9003/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    appname: eureka-server
+    hostname: eureka-ru-zone.com
+    
+---
+
+spring:
+  profiles: fr-zone
+  application:
+    name: eureka-server
+server:
+  port: 9003
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-us-zone.com:9001/eureka/,http://eureka-ru-zone.com:9002/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    appname: eureka-server
+    hostname: eureka-fr-zone.com
